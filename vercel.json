@@ -6,35 +6,8 @@
       "NODE_VERSION": "18.x"
     }
   },
-  "functions": {
-    "my-saas-app/app/src/server/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/my-saas-app/app/src/server/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/my-saas-app/app/src/client/$1"
-    }
-  ],
-  "buildCommand": "cd my-saas-app/app && wasp build",
+  "buildCommand": "curl -sSL https://get.wasp.sh/installer.sh | sh && cd my-saas-app/app && wasp build",
   "outputDirectory": "my-saas-app/app/.wasp/build/web-app/build",
-  "installCommand": "curl -sSL https://get.wasp.sh/installer.sh | sh && cd my-saas-app/app && npm install",
-  "devCommand": "cd my-saas-app/app && wasp start",
-  "framework": null,
-  "env": {
-    "DATABASE_URL": "@database_url",
-    "ADMIN_EMAILS": "@admin_emails",
-    "STRIPE_API_KEY": "@stripe_api_key",
-    "REACT_APP_STRIPE_PUBLISHABLE_KEY": "@stripe_publishable_key",
-    "OPENAI_API_KEY": "@openai_api_key",
-    "AWS_S3_REGION": "@aws_s3_region",
-    "AWS_S3_IAM_ACCESS_KEY": "@aws_s3_access_key",
-    "AWS_S3_IAM_SECRET_KEY": "@aws_s3_secret_key",
-    "AWS_S3_BUCKET_NAME": "@aws_s3_bucket_name"
-  }
+  "installCommand": "npm install --prefix my-saas-app/app",
+  "framework": null
 } 

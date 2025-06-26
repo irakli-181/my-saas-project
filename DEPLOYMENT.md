@@ -42,7 +42,11 @@ Vercel should automatically detect the settings, but verify:
 
 ### **Step 3: Set Environment Variables**
 
-Add these environment variables in your Vercel project settings:
+**IMPORTANT**: Add these environment variables directly in your Vercel project dashboard:
+
+1. Go to your Vercel project dashboard
+2. Navigate to **Settings** → **Environment Variables**
+3. Add each variable below by clicking **"Add"**
 
 #### **Required Variables**
 
