@@ -1,47 +1,40 @@
 {
   "version": 2,
   "name": "my-saas-project",
-  "builds": [
-    {
-      "src": "my-saas-app/app/package.json",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "my-saas-app/app/.wasp/**",
-          "my-saas-app/app/src/**",
-          "my-saas-app/app/public/**",
-          "my-saas-app/app/migrations/**"
-        ]
-      }
+  "build": {
+    "env": {
+      "NODE_VERSION": "18.x"
     }
-  ],
+  },
+  "functions": {
+    "my-saas-app/app/src/server/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "my-saas-app/app/api/$1"
+      "dest": "/my-saas-app/app/src/server/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "my-saas-app/app/$1"
+      "dest": "/my-saas-app/app/src/client/$1"
     }
   ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "functions": {
-    "my-saas-app/app/api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    },
-    "my-saas-app/app/api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "regions": ["iad1"],
-  "framework": null,
   "buildCommand": "cd my-saas-app/app && wasp build",
   "outputDirectory": "my-saas-app/app/.wasp/build/web-app/build",
-  "installCommand": "cd my-saas-app/app && npm install",
+  "installCommand": "curl -sSL https://get.wasp.sh/installer.sh | sh && cd my-saas-app/app && npm install",
   "devCommand": "cd my-saas-app/app && wasp start",
-  "cleanUrls": true,
-  "trailingSlash": false
+  "framework": null,
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "ADMIN_EMAILS": "@admin_emails",
+    "STRIPE_API_KEY": "@stripe_api_key",
+    "REACT_APP_STRIPE_PUBLISHABLE_KEY": "@stripe_publishable_key",
+    "OPENAI_API_KEY": "@openai_api_key",
+    "AWS_S3_REGION": "@aws_s3_region",
+    "AWS_S3_IAM_ACCESS_KEY": "@aws_s3_access_key",
+    "AWS_S3_IAM_SECRET_KEY": "@aws_s3_secret_key",
+    "AWS_S3_BUCKET_NAME": "@aws_s3_bucket_name"
+  }
 } 

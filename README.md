@@ -1,332 +1,286 @@
-# 🚀 Open SaaS - Complete SaaS Application Template
+# 🚀 Complete SaaS Application - Wasp Framework
 
-[![Deployment Status](https://img.shields.io/badge/deploy-vercel-black?logo=vercel)](https://vercel.com)
-[![GitHub](https://img.shields.io/github/license/irakli-181/my-saas-project)](https://github.com/irakli-181/my-saas-project)
-[![Wasp](https://img.shields.io/badge/built%20with-wasp-yellow)](https://wasp.sh)
+A production-ready SaaS application template built with **Wasp Framework**, featuring authentication, payments, AI integration, admin dashboard, and more. Perfect for launching your next SaaS business.
 
-A complete, production-ready SaaS application template built with **Wasp Framework**. Features authentication, admin dashboard, payments, AI integration, file uploads, and more.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/irakli-181/my-saas-project)
 
-## 🌟 Live Demo
-
-- **🌐 Live Application**: [Deploy to Vercel →](https://vercel.com/new/clone?repository-url=https://github.com/irakli-181/my-saas-project)
-- **📊 Admin Dashboard**: Access at `/admin` (admin users only)
-- **🤖 AI Demo**: OpenAI-powered features at `/demo-app`
-
-## ✨ Features
-
-### 🔐 **Authentication & User Management**
-- Email/password authentication
-- Email verification & password reset
-- User profile management
-- Admin user controls
-
-### 👑 **Admin Dashboard**
-- User management interface
-- Analytics & business metrics
-- Revenue tracking
-- System administration tools
-
-### 💰 **Payment Integration**
-- **Stripe** integration for subscriptions & one-time payments
-- **LemonSqueezy** alternative payment processor
-- Customer portal for subscription management
-- Webhook handling for payment events
-
-### 🤖 **AI-Powered Features**
-- OpenAI GPT integration
-- AI-powered task scheduling
-- Credit-based usage system
-- Smart content generation
-
-### 📁 **File Management**
-- AWS S3 integration for file uploads
-- Secure file handling
-- Image optimization
-- Download URL generation
-
-### 🎮 **Interactive Features**
-- Timer games for productivity
-- Typing speed tests
-- Keystroke tracking
-- Performance analytics
-
-### 📝 **Content Management**
-- Blog system powered by Astro
-- Starlight documentation framework
-- SEO-optimized content
-- Markdown support
-
-### 🧪 **Testing & Quality**
-- End-to-end tests with Playwright
-- Type safety with TypeScript
-- Code formatting with Prettier
-- Comprehensive test coverage
-
-### 🎨 **Modern UI/UX**
-- Tailwind CSS for styling
-- Responsive design
-- Dark mode support
-- Accessible components
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- **Node.js** 18+ 
-- **npm** or **yarn**
-- **Wasp CLI** (`curl -sSL https://get.wasp.sh/installer.sh | sh`)
-
-### 1. Clone & Install
-
-```bash
-git clone https://github.com/irakli-181/my-saas-project.git
-cd my-saas-project/my-saas-app/app
-npm install
-```
-
-### 2. Environment Setup
-
-Create environment files from examples:
-
-```bash
-cp .env.server.example .env.server
-cp .env.client.example .env.client
-```
-
-### 3. Configure Environment Variables
-
-**`.env.server`** (Backend Configuration):
-```bash
-# Database
-DATABASE_URL="postgresql://user:password@localhost:5432/opensaas"
-
-# Auth
-ADMIN_EMAILS="admin@test.com"
-SKIP_EMAIL_VERIFICATION_IN_DEV=true
-
-# Payments
-STRIPE_API_KEY="sk_test_your_stripe_key"
-STRIPE_WEBHOOK_SECRET="whsec_your_webhook_secret"
-
-# AI
-OPENAI_API_KEY="sk-your_openai_key"
-
-# File Upload
-AWS_S3_REGION="us-east-1"
-AWS_S3_IAM_ACCESS_KEY="your_access_key"
-AWS_S3_IAM_SECRET_KEY="your_secret_key"
-AWS_S3_FILES_BUCKET="your-bucket-name"
-```
-
-**`.env.client`** (Frontend Configuration):
-```bash
-REACT_APP_STRIPE_PUBLISHABLE_KEY="pk_test_your_stripe_public_key"
-```
-
-### 4. Start Development Server
-
-```bash
-wasp start
-```
-
-**Access Your Application:**
-- 🌐 **Frontend**: http://localhost:3000
-- ⚡ **Backend**: http://localhost:3001
-- 👑 **Admin**: http://localhost:3000/admin
-
-### 5. Create Admin Account
-
-1. Visit http://localhost:3000/signup
-2. Use email: `admin@test.com`
-3. Choose any password
-4. ✅ You now have admin access!
-
-## 📦 Project Structure
-
-```
-my-saas-project/
-├── my-saas-app/           # 🎯 Main Wasp application
-│   ├── app/               # 📂 Core application code
-│   │   ├── main.wasp      # ⚙️ App configuration
-│   │   ├── schema.prisma  # 🗄️ Database schema
-│   │   └── src/           # 📁 Source code
-│   │       ├── admin/     # 👑 Admin dashboard
-│   │       ├── auth/      # 🔐 Authentication
-│   │       ├── payment/   # 💰 Payment processing
-│   │       ├── demo-ai-app/ # 🤖 AI features
-│   │       └── client/    # 🎨 Frontend components
-│   ├── blog/              # 📝 Blog system (Astro)
-│   └── e2e-tests/         # 🧪 End-to-end tests
-└── README.md              # 📖 This file
-```
-
-## 🔧 Database Operations
-
-```bash
-# Apply database migrations
-wasp db migrate-dev
-
-# View database in browser
-wasp db studio
-
-# Seed database with sample data
-wasp db seed
-```
-
-## 🚀 Deployment
-
-### Deploy to Vercel
-
-1. **Connect Repository**:
-   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
-   - Click "New Project"
-   - Import from GitHub: `https://github.com/irakli-181/my-saas-project`
-
-2. **Configure Build Settings**:
-   - **Framework Preset**: `Other`
-   - **Root Directory**: `my-saas-app/app`
-   - **Build Command**: `wasp build`
-   - **Output Directory**: `.wasp/build/web-app/build`
-
-3. **Environment Variables**:
-   Add all variables from `.env.server` and `.env.client` in Vercel dashboard
-
-4. **Database Setup**:
-   - Use Vercel Postgres or external PostgreSQL
-   - Update `DATABASE_URL` environment variable
-
-### Deploy to Railway
-
-```bash
-# Install Railway CLI
-npm install -g @railway/cli
-
-# Login and deploy
-railway login
-railway init
-railway up
-```
-
-### Deploy to Render
-
-1. Connect GitHub repository
-2. Set build command: `wasp build`
-3. Set start command: `wasp start`
-4. Configure environment variables
-
-## 🔐 Environment Variables Guide
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `DATABASE_URL` | ✅ | PostgreSQL connection string |
-| `ADMIN_EMAILS` | ✅ | Comma-separated admin emails |
-| `STRIPE_API_KEY` | 💰 | Stripe secret key |
-| `OPENAI_API_KEY` | 🤖 | OpenAI API key for AI features |
-| `AWS_S3_*` | 📁 | AWS S3 credentials for file upload |
-
-## 🛠️ Development Workflow
-
-### Key Commands
-
-```bash
-# Start development server
-wasp start
-
-# Build for production
-wasp build
-
-# Run database migrations
-wasp db migrate-dev
-
-# Run tests
-cd e2e-tests && npm run test
-
-# Format code
-npm run format
-```
-
-### API Endpoints
-
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/auth/me` | GET | Get current user |
-| `/auth/email/signup` | POST | User registration |
-| `/auth/email/login` | POST | User login |
-| `/operations/generateGptResponse` | POST | AI content generation |
-| `/operations/createFile` | POST | File upload |
-| `/operations/getPaginatedUsers` | GET | Admin: User list |
-| `/payments-webhook` | POST | Payment webhooks |
-
-## 🎯 Key Features Usage
-
-### 🔐 Authentication
-- **Signup**: `/signup` - Create new account
-- **Login**: `/login` - Sign in to account
-- **Admin Access**: Use `admin@test.com` email
-
-### 💰 Payments
-- **Pricing**: `/pricing` - View subscription plans
-- **Checkout**: `/checkout` - Purchase subscriptions
-- **Webhooks**: Automatically handle payment events
-
-### 🤖 AI Features
-- **Demo App**: `/demo-app` - AI-powered task scheduling
-- **OpenAI Integration**: GPT-based content generation
-- **Credit System**: Usage-based AI access
-
-### 📁 File Upload
-- **Upload Interface**: `/file-upload` - Secure file uploads
-- **S3 Integration**: Automatic cloud storage
-- **File Management**: Download and delete files
-
-### 👑 Admin Dashboard
-- **Analytics**: `/admin` - Business metrics and KPIs
-- **User Management**: `/admin/users` - User administration
-- **Settings**: `/admin/settings` - System configuration
-
-## 🧪 Testing
-
-### Run End-to-End Tests
-
-```bash
-cd e2e-tests
-npm install
-npm run test
-```
-
-### Test Coverage
-
-- ✅ Authentication flows
-- ✅ Payment processing
-- ✅ Admin functionality
-- ✅ AI features
-- ✅ File uploads
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🔗 Links
-
-- **🌐 Live Demo**: [Coming Soon]
-- **📚 Documentation**: [Wasp Docs](https://wasp.sh/docs)
-- **💬 Community**: [Wasp Discord](https://discord.gg/rzdnErX)
-- **🐛 Issues**: [GitHub Issues](https://github.com/irakli-181/my-saas-project/issues)
-
-## 💡 Support
-
-- **📧 Email**: irakli.khizanishvili18@gmail.com
-- **🐛 Bug Reports**: [GitHub Issues](https://github.com/irakli-181/my-saas-project/issues)
-- **💬 Discussions**: [GitHub Discussions](https://github.com/irakli-181/my-saas-project/discussions)
+## 🌟 **Live Demo**
+- **🌐 Frontend**: Modern React application with Tailwind CSS
+- **⚡ Backend API**: Node.js with Prisma ORM
+- **👑 Admin Dashboard**: Complete management interface
+- **🔐 Authentication**: Email/password with admin roles
 
 ---
 
-**Built with ❤️ using [Wasp](https://wasp.sh) - The fastest way to develop full-stack web apps with React & Node.js.** 
+## 📊 **Project Statistics**
+- **233 Files** | **36,420+ Lines of Code** | **4.04 MB**
+- **Built with Wasp v0.16.6** | **TypeScript Ready** | **Production Optimized**
+
+---
+
+## 🚀 **Quick Deploy to Vercel**
+
+### **1-Click Deploy**
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/irakli-181/my-saas-project)
+
+### **Manual Deployment**
+1. **Fork this repository**
+2. **Connect to Vercel**:
+   - Go to [vercel.com](https://vercel.com)
+   - Import your forked repository
+   - Configure environment variables (see below)
+3. **Deploy**: Vercel will automatically build and deploy
+
+---
+
+## ⚙️ **Environment Variables for Production**
+
+### **Required Environment Variables**
+
+Add these to your Vercel project settings:
+
+```bash
+# Database
+DATABASE_URL=postgresql://username:password@host:5432/database
+
+# Authentication
+ADMIN_EMAILS=your-admin@email.com
+SKIP_EMAIL_VERIFICATION_IN_DEV=false
+
+# Stripe (Payment Processing)
+STRIPE_API_KEY=sk_live_...
+REACT_APP_STRIPE_PUBLISHABLE_KEY=pk_live_...
+
+# OpenAI (AI Features)
+OPENAI_API_KEY=sk-...
+
+# AWS S3 (File Upload)
+AWS_S3_REGION=us-east-1
+AWS_S3_IAM_ACCESS_KEY=your-access-key
+AWS_S3_IAM_SECRET_KEY=your-secret-key
+AWS_S3_BUCKET_NAME=your-bucket-name
+
+# Email (Optional)
+SENDGRID_API_KEY=your-sendgrid-key
+
+# Google Analytics (Optional)
+REACT_APP_GOOGLE_ANALYTICS_ID=GA4-...
+```
+
+---
+
+## 🏗️ **Application Architecture**
+
+```
+📦 SaaS Application
+├── 🎯 my-saas-app/app/          # Main Wasp application
+│   ├── ⚙️ main.wasp            # App configuration
+│   ├── 🗄️ schema.prisma        # Database schema
+│   ├── 📂 src/                  # Source code
+│   │   ├── 🔐 auth/            # Authentication system
+│   │   ├── 👑 admin/           # Admin dashboard
+│   │   ├── 💰 payment/         # Stripe & LemonSqueezy
+│   │   ├── 🤖 demo-ai-app/     # AI features
+│   │   ├── 📁 file-upload/     # AWS S3 integration
+│   │   ├── 📊 analytics/       # User analytics
+│   │   ├── 🎨 client/          # Frontend components
+│   │   ├── ⚙️ server/          # Backend utilities
+│   │   └── 🏠 landing-page/    # Marketing pages
+│   └── 📊 migrations/          # Database migrations
+├── 🧪 e2e-tests/               # Playwright tests
+├── 📝 blog/                    # Astro blog system
+└── 📖 README.md                # This file
+```
+
+---
+
+## 🔧 **Core Features**
+
+### **🔐 Authentication & User Management**
+- Email/password authentication
+- Admin role management
+- Password reset functionality
+- Email verification system
+
+### **👑 Admin Dashboard**
+- User management interface
+- Analytics and metrics
+- Revenue tracking
+- System configuration
+
+### **💰 Payment Integration**
+- **Stripe**: Credit cards, subscriptions
+- **LemonSqueezy**: Alternative payment processor
+- Webhook handling for payment events
+- Customer portal integration
+
+### **🤖 AI-Powered Features**
+- OpenAI GPT integration
+- AI-powered schedule generation
+- Credit-based usage system
+- Task automation
+
+### **📁 File Management**
+- AWS S3 integration
+- Secure file uploads
+- Download URL generation
+- File validation and processing
+
+### **📊 Analytics & Insights**
+- User activity tracking
+- Revenue analytics
+- Performance metrics
+- Real-time dashboards
+
+### **🎮 Interactive Features**
+- Timer games for productivity
+- Typing speed tests
+- Keystroke analytics
+- Performance tracking
+
+---
+
+## 🚀 **Local Development**
+
+### **Prerequisites**
+- Node.js 18+
+- PostgreSQL database
+- Wasp CLI (`curl -sSL https://get.wasp.sh/installer.sh | sh`)
+
+### **Setup**
+```bash
+# Clone the repository
+git clone https://github.com/irakli-181/my-saas-project.git
+cd my-saas-project
+
+# Navigate to app directory
+cd my-saas-app/app
+
+# Start development server
+wasp start
+```
+
+### **Access Points**
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
+- **Admin Dashboard**: http://localhost:3000/admin
+
+### **Admin Account Setup**
+1. Go to http://localhost:3000/signup
+2. Use email: `admin@test.com`
+3. Use any password
+4. You'll have admin privileges automatically
+
+---
+
+## 📋 **API Documentation**
+
+### **Authentication Endpoints**
+- `GET /auth/me` - Get current user
+- `POST /auth/email/signup` - Register new user
+- `POST /auth/email/login` - User login
+- `POST /auth/email/request-password-reset` - Password reset
+
+### **Admin Endpoints**
+- `GET /operations/getPaginatedUsers` - Get users (admin only)
+- `POST /operations/updateUser` - Update user (admin only)
+- `GET /operations/getDashboardStats` - Dashboard analytics
+
+### **AI Features**
+- `POST /operations/generateGptResponse` - AI schedule generation
+- `GET /operations/getGptResponses` - Get AI responses
+
+### **File Upload**
+- `POST /operations/createFile` - Upload file to S3
+- `GET /operations/getAllFilesByUser` - Get user files
+
+### **Payment Processing**
+- `POST /payments-webhook` - Payment webhooks
+- `POST /operations/createCheckoutSession` - Create payment session
+
+---
+
+## 🛠️ **Tech Stack**
+
+### **Frontend**
+- **React 18** with TypeScript
+- **Tailwind CSS** for styling
+- **Vite** for build tooling
+- **React Router** for navigation
+
+### **Backend**
+- **Node.js** with Express
+- **Prisma ORM** for database
+- **PostgreSQL** database
+- **JWT** authentication
+
+### **Framework**
+- **Wasp v0.16.6** - Full-stack framework
+- **TypeScript** throughout
+- **ESLint** + **Prettier** for code quality
+
+### **Integrations**
+- **Stripe** & **LemonSqueezy** - Payments
+- **OpenAI GPT** - AI features
+- **AWS S3** - File storage
+- **SendGrid** - Email delivery
+- **Google Analytics** - Analytics
+
+### **Testing**
+- **Playwright** - E2E testing
+- **Jest** - Unit testing
+- **TypeScript** - Type safety
+
+---
+
+## 🚀 **Deployment Options**
+
+### **Vercel (Recommended)**
+- ✅ **1-click deployment**
+- ✅ **Automatic builds**
+- ✅ **Environment variables**
+- ✅ **Custom domains**
+
+### **Railway**
+- ✅ **Database included**
+- ✅ **Auto scaling**
+- ✅ **Git integration**
+
+### **Render**
+- ✅ **Free tier available**
+- ✅ **Managed database**
+- ✅ **Auto deploys**
+
+---
+
+## 📝 **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 **Contributing**
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📞 **Support**
+
+- **GitHub Issues**: [Report bugs or request features](https://github.com/irakli-181/my-saas-project/issues)
+- **Documentation**: Check the `/my-saas-app/README.md` for detailed setup
+- **Wasp Docs**: [Official Wasp documentation](https://wasp-lang.dev/docs)
+
+---
+
+## 🌟 **Show Your Support**
+
+Give a ⭐️ if this project helped you build your SaaS application!
+
+---
+
+**Built with ❤️ using Wasp Framework** 
