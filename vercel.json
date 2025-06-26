@@ -10,10 +10,5 @@
   "buildCommand": "curl -sSL https://get.wasp.sh/installer.sh | sh && export PATH=$PATH:$HOME/.local/bin && cd my-saas-app/app && wasp build",
   "outputDirectory": "my-saas-app/app/.wasp/build/web-app/build",
   "installCommand": "cd my-saas-app/app && npm ci",
-  "framework": null,
-  "functions": {
-    "my-saas-app/app/.wasp/build/server/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  "framework": null
 } 
