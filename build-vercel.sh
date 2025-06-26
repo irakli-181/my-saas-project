@@ -11,7 +11,10 @@ cd my-saas-app/app
 echo "--- Building Wasp Project ---"
 wasp build
 
-echo "--- Wasp build finished. Preparing output for Vercel. ---"
+echo "--- Wasp build finished. Listing contents of .wasp/build for debugging: ---"
+ls -R .wasp/build
+
+echo "--- Preparing output for Vercel. ---"
 # Create the root-level output directory Vercel expects
 mkdir -p ../../build
 
