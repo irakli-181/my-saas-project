@@ -7,8 +7,8 @@
       "WASP_TELEMETRY_DISABLE": "1"
     }
   },
-  "buildCommand": "curl -sSL https://get.wasp.sh/installer.sh | sh && export PATH=$PATH:$HOME/.local/bin && cd my-saas-app/app && wasp build",
-  "outputDirectory": "my-saas-app/app/.wasp/build/web-app/build",
+  "buildCommand": "curl -sSL https://get.wasp.sh/installer.sh | sh && export PATH=$PATH:$HOME/.local/bin && cd my-saas-app/app && wasp build && mkdir -p ../../build && cp -r .wasp/build/web-app/build/* ../../build/",
+  "outputDirectory": "build",
   "installCommand": "cd my-saas-app/app && npm ci",
   "framework": null
 } 
