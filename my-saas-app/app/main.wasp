@@ -35,6 +35,7 @@ app OpenSaaS {
     methods: {
       // NOTE: If you decide to not use email auth, make sure to also delete the related routes and pages below.
       //   (RequestPasswordReset(Route|Page), PasswordReset(Route|Page), EmailVerification(Route|Page))
+      /*
       email: {
         fromField: {
           name: "Open SaaS App",
@@ -50,6 +51,7 @@ app OpenSaaS {
         },
         userSignupFields: import { getEmailUserFields } from "@src/auth/userSignupFields",
       },
+      */
       // Uncomment to enable Google Auth (check https://wasp.sh/docs/auth/social-auth/google for setup instructions):
       // google: { // Guide for setting up Auth via Google
       //   userSignupFields: import { getGoogleUserFields } from "@src/auth/userSignupFields",
