@@ -179,7 +179,7 @@ query getAllTasksByUser {
 }
 //#endregion
 
-//#region Payment
+/* //#region Payment
 route PricingPageRoute { path: "/pricing", to: PricingPage }
 page PricingPage {
   component: import PricingPage from "@src/payment/PricingPage"
@@ -196,54 +196,28 @@ query getCustomerPortalUrl {
   entities: [User]
 }
 
-action generateCheckoutSession {
-  fn: import { generateCheckoutSession } from "@src/payment/operations",
+query getSubscription {
+  fn: import { getSubscription } from  "@src/payment/operations",
+  entities: [User]
+}
+
+action createCheckoutSession {
+  fn: import { createCheckoutSession } from "@src/payment/operations",
   entities: [User]
 }
 
 api paymentsWebhook {
-  fn: import { paymentsWebhook } from "@src/payment/webhook",
-  entities: [User],
-  middlewareConfigFn: import { paymentsMiddlewareConfigFn } from "@src/payment/webhook",
-  httpRoute: (POST, "/payments-webhook")
+  fn: import { stripeWebhook } from "@src/payment/stripe/webhook",
+  http: (POST, "/payments-webhook"),
+  middleware: [
+    // We are using this middleware to get the raw body of the request,
+    // which is needed for Stripe to verify the webhook signature.
+    // We are using `express.raw` instead of `express.json` because we need the raw body.
+    // Ref: https://wasp-lang.dev/docs/language/features#http-and-apis
+    import { raw } from "express"
+  ]
 }
-//#endregion
-
-//#region Timer Game
-route TimerGameRoute { path: "/timer", to: TimerGamePage }
-page TimerGamePage {
-  authRequired: true,
-  component: import TimerGamePage from "@src/client/components/TimerGamePage"
-}
-
-action createSpeedScore {
-  fn: import { createSpeedScore } from "@src/timer-game/operations",
-  entities: [User, SpeedScore]
-}
-
-query getSpeedScores {
-  fn: import { getSpeedScores } from "@src/timer-game/operations",
-  entities: [User, SpeedScore]
-}
-//#endregion
-
-//#region Keystroke Timer
-route KeystrokeTimerRoute { path: "/keystroke", to: KeystrokeTimerPage }
-page KeystrokeTimerPage {
-  authRequired: true,
-  component: import KeystrokeTimerPage from "@src/client/components/KeystrokeTimerPage"
-}
-
-action createTypingScore {
-  fn: import { createTypingScore } from "@src/typing-timer/operations",
-  entities: [User, TypingScore]
-}
-
-query getTypingScores {
-  fn: import { getTypingScores } from "@src/typing-timer/operations",
-  entities: [User, TypingScore]
-}
-//#endregion
+//#endregion */
 
 //#region File Upload
 route FileUploadRoute { path: "/file-upload", to: FileUploadPage }

@@ -8,15 +8,15 @@ const emailDataSchema = z.object({
 });
 
 export const getEmailUserFields = defineUserSignupFields({
-  email: (data) => {
+  email: (data: any) => {
     const emailData = emailDataSchema.parse(data);
     return emailData.email;
   },
-  username: (data) => {
+  username: (data: any) => {
     const emailData = emailDataSchema.parse(data);
     return emailData.email;
   },
-  isAdmin: (data) => {
+  isAdmin: (data: any) => {
     const emailData = emailDataSchema.parse(data);
     return adminEmails.includes(emailData.email);
   },
