@@ -60,8 +60,10 @@ AWS_S3_IAM_ACCESS_KEY=your-access-key
 AWS_S3_IAM_SECRET_KEY=your-secret-key
 AWS_S3_BUCKET_NAME=your-bucket-name
 
-# Email (Optional)
+# Email (SendGrid - required for production)
 SENDGRID_API_KEY=your-sendgrid-key
+SENDGRID_DEFAULT_FROM_EMAIL=hello@yourdomain.com
+SENDGRID_DEFAULT_FROM_NAME="Your App Name"
 
 # Google Analytics (Optional)
 REACT_APP_GOOGLE_ANALYTICS_ID=GA4-...

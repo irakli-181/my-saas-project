@@ -64,6 +64,11 @@ REACT_APP_STRIPE_PUBLISHABLE_KEY=pk_live_your_stripe_publishable_key
 
 # OpenAI Integration
 OPENAI_API_KEY=sk-your_openai_api_key
+
+# Email Service (SendGrid)
+SENDGRID_API_KEY=your_sendgrid_api_key
+SENDGRID_DEFAULT_FROM_EMAIL=your-verified-sendgrid-email@example.com
+SENDGRID_DEFAULT_FROM_NAME="Your App Name"
 ```
 
 #### **Optional Variables (for full functionality)**
