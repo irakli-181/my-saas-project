@@ -282,5 +282,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Give a ⭐️ if this project helped you build your SaaS application!
 
 ---
+*Vercel Deployment Trigger: Forcing a new build with the latest configuration.*
+---
 
 **Built with ❤️ using Wasp Framework** 
