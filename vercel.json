@@ -3,11 +3,17 @@
   "name": "my-saas-project",
   "build": {
     "env": {
-      "NODE_VERSION": "18.x"
+      "NODE_VERSION": "18.x",
+      "WASP_TELEMETRY_DISABLE": "1"
     }
   },
-  "buildCommand": "curl -sSL https://get.wasp.sh/installer.sh | sh && cd my-saas-app/app && wasp build",
+  "buildCommand": "curl -sSL https://get.wasp.sh/installer.sh | sh && export PATH=$PATH:$HOME/.local/bin && cd my-saas-app/app && wasp build",
   "outputDirectory": "my-saas-app/app/.wasp/build/web-app/build",
-  "installCommand": "npm install --prefix my-saas-app/app",
-  "framework": null
+  "installCommand": "cd my-saas-app/app && npm ci",
+  "framework": null,
+  "functions": {
+    "my-saas-app/app/.wasp/build/server/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 } 
