@@ -1,0 +1,49 @@
+{
+  "name": "my-saas-project",
+  "version": "1.0.0",
+  "description": "Complete SaaS application built with Wasp framework - Authentication, Payments, AI, Admin Dashboard",
+  "scripts": {
+    "build": "cd my-saas-app/app && wasp build",
+    "start": "cd my-saas-app/app && wasp start",
+    "dev": "cd my-saas-app/app && wasp start",
+    "install-deps": "cd my-saas-app/app && npm install",
+    "db:migrate": "cd my-saas-app/app && wasp db migrate-dev",
+    "db:studio": "cd my-saas-app/app && wasp db studio",
+    "db:seed": "cd my-saas-app/app && wasp db seed",
+    "test": "cd my-saas-app/e2e-tests && npm test",
+    "test:install": "cd my-saas-app/e2e-tests && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/irakli-181/my-saas-project.git"
+  },
+  "keywords": [
+    "saas",
+    "wasp",
+    "react",
+    "nodejs",
+    "authentication",
+    "payments",
+    "stripe",
+    "ai",
+    "openai",
+    "admin-dashboard",
+    "file-upload",
+    "aws-s3",
+    "tailwind",
+    "typescript"
+  ],
+  "author": {
+    "name": "Irakli Khizanishvili",
+    "email": "irakli.khizanishvili18@gmail.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "homepage": "https://github.com/irakli-181/my-saas-project#readme",
+  "bugs": {
+    "url": "https://github.com/irakli-181/my-saas-project/issues"
+  }
+} 

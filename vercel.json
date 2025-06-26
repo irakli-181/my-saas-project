@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "name": "my-saas-project",
+  "builds": [
+    {
+      "src": "my-saas-app/app/package.json",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "my-saas-app/app/.wasp/**",
+          "my-saas-app/app/src/**",
+          "my-saas-app/app/public/**",
+          "my-saas-app/app/migrations/**"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "my-saas-app/app/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "my-saas-app/app/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "my-saas-app/app/api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    },
+    "my-saas-app/app/api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "regions": ["iad1"],
+  "framework": null,
+  "buildCommand": "cd my-saas-app/app && wasp build",
+  "outputDirectory": "my-saas-app/app/.wasp/build/web-app/build",
+  "installCommand": "cd my-saas-app/app && npm install",
+  "devCommand": "cd my-saas-app/app && wasp start",
+  "cleanUrls": true,
+  "trailingSlash": false
+} 
