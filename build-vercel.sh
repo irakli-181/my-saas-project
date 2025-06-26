@@ -17,26 +17,26 @@ wasp build
 echo "--- Wasp build finished. Preparing output for Vercel. ---"
 
 # The root directory for Vercel's output MUST be 'public' for serverless functions to work correctly.
-# Wasp places the frontend build in '.wasp/build/web-app/build/'
-OUTPUT_DIR_PATH=".wasp/build/web-app/build"
+# Wasp places the frontend build in '.wasp/build/web-app/dist'
+BUILD_OUTPUT_DIR=".wasp/build/web-app/dist"
 
-# Check if the build output directory exists
-if [ -d "$OUTPUT_DIR_PATH" ]; then
-  echo "--- Found build output at $OUTPUT_DIR_PATH. Copying to /public directory. ---"
-  
-  # Create the final 'public' directory at the root of the monorepo
-  mkdir -p ../../public
-  
-  # Copy all contents from the Wasp build output to the new 'public' directory
-  cp -r $OUTPUT_DIR_PATH/. ../../public/
-  
-  echo "--- Files successfully copied to /public. ---"
-else
-  echo "--- ERROR: Build output directory not found at $OUTPUT_DIR_PATH! ---"
+# Debug: list the contents of .wasp/build to see what's actually there.
+if [ ! -d "$BUILD_OUTPUT_DIR" ]; then
+  echo "--- ERROR: Build output directory not found at $BUILD_OUTPUT_DIR! ---"
   # List the contents of the build directory to help debug
   echo "--- Listing contents of .wasp/build: ---"
   ls -R .wasp/build
   exit 1
 fi
+
+echo "--- Found build output at $BUILD_OUTPUT_DIR. Copying to /public directory. ---"
+
+# Create the final 'public' directory at the root of the monorepo
+mkdir -p ../../public
+
+# Copy all contents from the Wasp build output to the new 'public' directory
+cp -r $BUILD_OUTPUT_DIR/. ../../public/
+
+echo "--- Files successfully copied to /public. ---"
 
 echo "--- Build script completed successfully! ---" 
